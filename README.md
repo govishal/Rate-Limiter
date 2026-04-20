@@ -67,3 +67,19 @@ curl http://localhost:8080/stats
   ]
 }
 ```
+
+## Design decisions
+
+* Implemented a **sliding window rate limiting algorithm** to ensure accurate, time-based request control and avoid burst issues at window boundaries
+* Used **in-memory storage** for simplicity and fast access
+* Ensured **concurrency safety** using per-user locking to handle parallel requests correctly
+* Exposed clean REST APIs for request handling and statistics
+
+## What I would improve with more time
+
+* Introduce **Redis** for distributed rate limiting across multiple instances
+* Add **persistent storage** for request statistics
+* Implement **configurable rate limits per user/tier**
+* Improve **observability** with structured logging, metrics, and monitoring
+* Add **unit and load tests** for reliability
+* Containerize and deploy using cloud infrastructure (e.g., Docker + Azure)
